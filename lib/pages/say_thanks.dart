@@ -1,9 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/bxs.dart';
-import 'package:iconify_flutter/icons/ph.dart';
 import 'package:wisewave/components/theme/main_bg_gradient.dart';
 
 class SayThanksPage extends StatelessWidget {
