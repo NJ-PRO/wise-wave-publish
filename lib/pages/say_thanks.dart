@@ -25,151 +25,128 @@ class SayThanksPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Stack(
-                  children: [
-                    const Positioned(
-                      left: 250,
-                      top: 0,
-                      child: Iconify(
-                        Bxs.sun,
-                        size: 250,
-                        color: Color.fromARGB(40, 255, 155, 135),
-                      ),
-                    ),
-                    const Positioned(
-                      right: 200,
-                      top: 100,
-                      child: Iconify(
-                        Ph.rainbow_cloud_fill,
-                        size: 300,
-                        color: Color.fromARGB(40, 255, 155, 135),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 25),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      DateTime.now().toString().split(' ')[0],
-                                      style: const TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const Text(
-                                  "Its a Wonderful Day!",
-                                  style: TextStyle(fontSize: 18),
+                                Text(
+                                  DateTime.now().toString().split(' ')[0],
+                                  style: const TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                          const SizedBox(height: 20),
-                          const Divider(
-                              thickness: 2.5,
-                              color: Color.fromARGB(60, 100, 100, 100)),
-                          const SizedBox(height: 80),
-                          const Text(
-                            "What Are You Thankful About?",
-                            style: TextStyle(fontSize: 23),
-                          ),
-                          const SizedBox(height: 15),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 25),
-                            child: TextField(
-                              controller: _gratitudeController,
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.all(30),
-                                filled: true,
-                                fillColor: const Color(0xFFE3F4F7),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Color(0xFFE3F4F7)),
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Color(0xFFE3F4F7)),
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                hintText: 'Today I am grateful for...',
-                                hintStyle: const TextStyle(
-                                  fontSize: 18,
-                                  color: Color(0x79474747),
-                                ),
-                              ),
+                            const Text(
+                              "Its a Wonderful Day!",
+                              style: TextStyle(fontSize: 18),
                             ),
-                          ),
-                          const SizedBox(height: 16),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 25),
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                fixedSize: const MaterialStatePropertyAll(
-                                    Size(double.maxFinite, 80)),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        const Color(0xFFE5ABB5)),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                ),
-                              ),
-                              onPressed: () {
-                                FirebaseFirestore.instance
-                                    .collection('gratitude')
-                                    .add({
-                                  'userId': uid,
-                                  'date': DateTime.now(),
-                                  'gratitude': _gratitudeController.text,
-                                }).then((_) {
-                                  Navigator.pop(context);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                          'Always remember to be thankful ❤️'),
-                                    ),
-                                  );
-                                });
-                              },
-                              child: const Text(
-                                'Say Thanks!',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25),
-                            child: Text(
-                              '"Gratitude turns what we have into enough."',
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 125, 125, 125),
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+                      const Divider(
+                          thickness: 2.5,
+                          color: Color.fromARGB(60, 100, 100, 100)),
+                      const SizedBox(height: 80),
+                      const Text(
+                        "What Are You Thankful About?",
+                        style: TextStyle(fontSize: 23),
+                      ),
+                      const SizedBox(height: 15),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 25),
+                        child: TextField(
+                          controller: _gratitudeController,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.all(30),
+                            filled: true,
+                            fillColor: const Color(0xFFE3F4F7),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFE3F4F7)),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFE3F4F7)),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            hintText: 'Today I am grateful for...',
+                            hintStyle: const TextStyle(
+                              fontSize: 18,
+                              color: Color(0x79474747),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            fixedSize: const MaterialStatePropertyAll(
+                                Size(double.maxFinite, 80)),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color(0xFFE5ABB5)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            FirebaseFirestore.instance
+                                .collection('gratitude')
+                                .add({
+                              'userId': uid,
+                              'date': DateTime.now(),
+                              'gratitude': _gratitudeController.text,
+                            }).then((_) {
+                              Navigator.pop(context);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content:
+                                      Text('Always remember to be thankful ❤️'),
+                                ),
+                              );
+                            });
+                          },
+                          child: const Text(
+                            'Say Thanks!',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25),
+                        child: Text(
+                          '"Gratitude turns what we have into enough."',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 125, 125, 125),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
